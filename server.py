@@ -9,7 +9,7 @@ connections = {}
 
 def start_quic_server():
     server_address = ('localhost', 4433)
-    buffer_size = 4096
+    buffer_size = (1024*1024)*4
 
     # Create a UDP socket
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as server_socket:
@@ -34,6 +34,8 @@ def start_quic_server():
 
                 # Initialize flows
                 num_flows = 5
+
+
                 for i in range(num_flows):
                     packet_size = random.randint(1000, 2000)
                     flow = {
